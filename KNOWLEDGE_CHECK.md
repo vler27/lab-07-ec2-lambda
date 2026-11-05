@@ -14,7 +14,7 @@ Suppose your instance is running and has a public IP address, but `ssh` cannot c
 
 **Your answer:** Which path did you take in the console (service → page → tab)?
 
-...
+The path I took in the console was EC2, then Security Groups, then Network & Security under that, then launch-wizard-1, then the Inbound rules tab. There, it shows which connections are allowed in. If ssh can’t connect, I would check there if that a rule allows SSH from my IP address, or from anywhere (0.0.0.0/0) like mine.
 
 ## 2. Lambda: why didn't my function run?
 
@@ -26,7 +26,7 @@ Suppose you uploaded a new book to your bucket, but several minutes later MongoD
 
 **Your answer:** Which path did you take in the console (service → page → tab)?
 
-...
+The path I took in the console was Lambda, then Functions, then book-analyzer-dev-analyze_new_book, then Function overview, then Triggers. The trigger is an S3 event in my bucket.  S3 starts the function. If the function never ran, this is where I’d check that the trigger exists, where it was created and showing if it was created in the right bucket.
 
 ## 3. Lambda: where do I find the error?
 
@@ -38,7 +38,7 @@ Suppose the function did start, but MongoDB still has no document for the book. 
 
 **Your answer:** Which path did you take in the console (service → page → tab)?
 
-...
+The path I took was Lambda, then Functions, then book-analyzer-dev-analyze_new_book, then Monitor tab, then View CloudWatch logs, then newest log stream. If the function failed, I’d read the newest stream here to see why.
 
 ## 4. EC2 or Lambda: a backlog or new uploads?
 
@@ -54,4 +54,4 @@ For comparison, typical times in this lab:
 
 **Your answer:**
 
-...
+I would use EC2 For the backlog of books already in the bucket. I would first start one machine and then run analyze.py over all the books in one batch. I would terminate that when it finishes. I would use Lambda for new books that was uploaded a few at a time and each upload triggers the function right away. 
